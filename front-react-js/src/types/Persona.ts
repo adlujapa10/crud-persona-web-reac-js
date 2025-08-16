@@ -24,7 +24,7 @@ export interface EstadisticasPersonas {
 
 export interface ApiResponse<T> {
   success: boolean;
+  mensaje?: string;
   data?: T;
-  message?: string;
   error?: string;
 }

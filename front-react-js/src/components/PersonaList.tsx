@@ -101,16 +101,21 @@ const PersonaList: React.FC = () => {
 
     try {
       setDeleting(true);
-      await personaService.eliminar(personaToDelete.id!);
-      setPersonas(prev => prev.filter(p => p.id !== personaToDelete.id));
-      setShowDeleteModal(false);
-      setPersonaToDelete(null);
+      const response = await personaService.eliminar(personaToDelete.id!);
       
-      // Recargar estadísticas
-      const nuevasEstadisticas = await personaService.obtenerEstadisticas();
-      setEstadisticas(nuevasEstadisticas);
-    } catch (err) {
-      setError('Error al eliminar la persona');
+      if (response.success) {
+        setPersonas(prev => prev.filter(p => p.id !== personaToDelete.id));
+        setShowDeleteModal(false);
+        setPersonaToDelete(null);
+        
+        // Recargar estadísticas
+        const nuevasEstadisticas = await personaService.obtenerEstadisticas();
+        setEstadisticas(nuevasEstadisticas);
+      } else {
+        setError(response.mensaje || 'Error al eliminar la persona');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.mensaje || 'Error al eliminar la persona');
     } finally {
       setDeleting(false);
     }

@@ -8,21 +8,65 @@ import NavigationBar from './components/Navbar';
 import Home from './components/Home';
 import PersonaList from './components/PersonaList';
 import PersonaForm from './components/PersonaForm';
+import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavigationBar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/personas" element={<PersonaList />} />
-            <Route path="/personas/nueva" element={<PersonaForm />} />
-            <Route path="/personas/editar/:id" element={<PersonaForm />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
+        <Routes>
+          {/* Ruta pública para login */}
+          <Route path="/login" element={<Login />} />
+          
+          {/* Rutas protegidas */}
+          <Route path="/" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <Home />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/personas" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <PersonaList />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/personas/nueva" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <PersonaForm />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/personas/editar/:id" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <PersonaForm />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          {/* Redirigir a login si no encuentra la ruta */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
       </div>
     </Router>
   );
