@@ -1,0 +1,149 @@
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+main {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Estilos para la tabla */
+.table-responsive {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action {
+  margin: 0 2px;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+}
+
+/* Estilos para las tarjetas */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Estilos para el navbar */
+.navbar-brand {
+  font-weight: bold;
+}
+
+/* Estilos para los badges */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5em 0.75em;
+}
+
+/* Estilos para los botones */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-group .btn {
+  border-radius: 4px;
+}
+
+/* Estilos para los formularios */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilos para las alertas */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Estilos para los modales */
+.modal-content {
+  border-radius: 10px;
+  border: none;
+}
+
+/* Estilos para el spinner */
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Estilos para los iconos */
+.fas {
+  font-size: 0.9em;
+}
+
+/* Estilos para el responsive */
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+  }
+  
+  .btn-group .btn {
+    margin-bottom: 0.25rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+}
+
+/* Estilos para el hover en las filas de la tabla */
+.table tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Estilos para los enlaces */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el código */
+code {
+  background-color: #f8f9fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Estilos para el footer */
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Estilos para las sombras */
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Estilos para los bordes */
+.border-0 {
+  border: 0 !important;
+}
+
+/* Estilos para el display */
+.display-4 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* Estilos para el lead */
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
