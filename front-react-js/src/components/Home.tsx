@@ -38,9 +38,17 @@ const Home: React.FC = () => {
             <i className="fas fa-list me-2"></i>
             Ver Personas
           </Link>
-          <Link to="/personas/nueva" className="btn btn-success btn-lg">
+          <Link to="/personas/nueva" className="btn btn-success btn-lg me-3">
             <i className="fas fa-plus me-2"></i>
             Nueva Persona
+          </Link>
+          <Link to="/usuarios" className="btn btn-info btn-lg me-3">
+            <i className="fas fa-users me-2"></i>
+            Ver Usuarios
+          </Link>
+          <Link to="/usuarios/nuevo" className="btn btn-warning btn-lg">
+            <i className="fas fa-user-plus me-2"></i>
+            Nuevo Usuario
           </Link>
         </div>
       </div>
@@ -128,6 +136,18 @@ const Home: React.FC = () => {
           </Card>
         </Col>
         <Col md={4}>
+          <Card className="h-100 border-0 shadow-sm">
+            <Card.Body className="text-center">
+              <i className="fas fa-user-shield fa-2x text-warning mb-3"></i>
+              <h5>Gestión de Usuarios</h5>
+              <p className="text-muted">
+                Administra usuarios del sistema con roles y permisos,
+                crea cuentas y gestiona accesos de forma segura.
+              </p>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={6}>
           <Card className="h-100 border-0 shadow-sm">
             <Card.Body className="text-center">
               <i className="fas fa-chart-bar fa-2x text-info mb-3"></i>

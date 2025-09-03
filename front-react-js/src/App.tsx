@@ -8,6 +8,8 @@ import NavigationBar from './components/Navbar';
 import Home from './components/Home';
 import PersonaList from './components/PersonaList';
 import PersonaForm from './components/PersonaForm';
+import UsuarioList from './components/UsuarioList';
+import UsuarioForm from './components/UsuarioForm';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -59,6 +61,40 @@ function App() {
                 <NavigationBar />
                 <main>
                   <PersonaForm />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          {/* Rutas de Usuarios */}
+          <Route path="/usuarios" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <UsuarioList />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/usuarios/nuevo" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <UsuarioForm />
+                </main>
+              </>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/usuarios/editar/:id" element={
+            <ProtectedRoute>
+              <>
+                <NavigationBar />
+                <main>
+                  <UsuarioForm />
                 </main>
               </>
             </ProtectedRoute>

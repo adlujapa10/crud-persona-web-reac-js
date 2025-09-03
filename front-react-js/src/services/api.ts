@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Persona, EstadisticasPersonas, ApiResponse } from '../types/Persona';
+import { Usuario, EstadisticasUsuarios, UsuarioCreateRequest, UsuarioUpdateRequest } from '../types/Usuario';
 
-const API_BASE_URL = '/crm';
+const API_BASE_URL = 'http://localhost:8081/crm';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -82,8 +83,57 @@ export const personaService = {
 
   // Limpiar duplicados
   limpiarDuplicados: async (): Promise<ApiResponse<any>> => {
-    const response = await api.post('/personas/limpiar-duplicados');
+    const response = await api.post('/personas/api/limpiar-duplicados');
     return response.data;
+  }
+};
+
+export const usuarioService = {
+  // Obtener todas las personas disponibles para crear usuarios
+  obtenerPersonasDisponibles: async (): Promise<Persona[]> => {
+    const response = await api.get('/usuarios/api/personas-disponibles');
+    return response.data.personas;
+  },
+
+  // Obtener todos los usuarios
+  obtenerTodos: async (): Promise<Usuario[]> => {
+    const response = await api.get('/usuarios/api');
+    return response.data.usuarios;
+  },
+
+  // Obtener un usuario por ID
+  obtenerPorId: async (id: number): Promise<Usuario> => {
+    const response = await api.get(`/usuarios/api/${id}`);
+    return response.data.usuario;
+  },
+
+  // Crear un nuevo usuario
+  crear: async (usuario: UsuarioCreateRequest): Promise<Usuario> => {
+    const response = await api.post('/usuarios/api', usuario);
+    return response.data.usuario;
+  },
+
+  // Actualizar un usuario existente
+  actualizar: async (id: number, usuario: UsuarioUpdateRequest): Promise<Usuario> => {
+    const response = await api.put(`/usuarios/api/${id}`, usuario);
+    return response.data.usuario;
+  },
+
+  // Eliminar un usuario
+  eliminar: async (id: number): Promise<void> => {
+    await api.delete(`/usuarios/api/${id}`);
+  },
+
+  // Buscar usuarios por término
+  buscar: async (termino: string): Promise<Usuario[]> => {
+    const response = await api.get(`/usuarios/api/buscar?termino=${encodeURIComponent(termino)}`);
+    return response.data.usuarios;
+  },
+
+  // Obtener estadísticas de usuarios
+  obtenerEstadisticas: async (): Promise<EstadisticasUsuarios> => {
+    const response = await api.get('/usuarios/api/estadisticas');
+    return response.data.estadisticas;
   }
 };
 

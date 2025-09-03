@@ -35,13 +35,21 @@ const NavigationBar: React.FC = () => {
               <i className="fas fa-plus me-1"></i>
               Nueva Persona
             </Nav.Link>
+            <Nav.Link as={Link} to="/usuarios" active={location.pathname === '/usuarios'}>
+              <i className="fas fa-users me-1"></i>
+              Usuarios
+            </Nav.Link>
+            <Nav.Link as={Link} to="/usuarios/nuevo" active={location.pathname === '/usuarios/nuevo'}>
+              <i className="fas fa-user-plus me-1"></i>
+              Nuevo Usuario
+            </Nav.Link>
             
             {/* Dropdown del usuario */}
             <NavDropdown 
               title={
                 <span>
                   <i className="fas fa-user-circle me-1"></i>
-                  {usuario?.nombreCompleto || 'Usuario'}
+                  {usuario?.persona ? `${usuario.persona.nombre} ${usuario.persona.apellido}` : 'Usuario'}
                 </span>
               } 
               id="user-dropdown"
@@ -51,10 +59,10 @@ const NavigationBar: React.FC = () => {
                 <i className="fas fa-user me-2"></i>
                 {usuario?.usuario}
               </NavDropdown.Item>
-              {usuario?.rol && (
+              {usuario?.persona?.rol && (
                 <NavDropdown.Item disabled>
                   <i className="fas fa-briefcase me-2"></i>
-                  {usuario.rol}
+                  {usuario.persona.rol}
                 </NavDropdown.Item>
               )}
               <NavDropdown.Divider />
