@@ -43,6 +43,26 @@ const NavigationBar: React.FC = () => {
               <i className="fas fa-user-plus me-1"></i>
               Nuevo Usuario
             </Nav.Link>
+            <Nav.Link as={Link} to="/productos" active={location.pathname === '/productos'}>
+              <i className="fas fa-boxes me-1"></i>
+              Productos
+            </Nav.Link>
+            <Nav.Link as={Link} to="/productos/nuevo" active={location.pathname === '/productos/nuevo'}>
+              <i className="fas fa-plus me-1"></i>
+              Nuevo Producto
+            </Nav.Link>
+            <Nav.Link as={Link} to="/facturas" active={location.pathname === '/facturas'}>
+              <i className="fas fa-file-invoice me-1"></i>
+              Facturas
+            </Nav.Link>
+            <Nav.Link as={Link} to="/facturas/nueva" active={location.pathname === '/facturas/nueva'}>
+              <i className="fas fa-plus me-1"></i>
+              Nueva Factura
+            </Nav.Link>
+            <Nav.Link as={Link} to="/reportes" active={location.pathname === '/reportes'}>
+              <i className="fas fa-chart-line me-1"></i>
+              Reportes
+            </Nav.Link>
             
             {/* Dropdown del usuario */}
             <NavDropdown 

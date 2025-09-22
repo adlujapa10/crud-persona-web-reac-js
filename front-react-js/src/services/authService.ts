@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LoginRequest, LoginResponse, Usuario } from '../types/Usuario';
 
-const API_BASE_URL = '/crm';
+const API_BASE_URL = 'http://localhost:8081/crm';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
